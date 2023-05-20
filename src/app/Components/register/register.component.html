@@ -1,0 +1,138 @@
+
+
+<div class="container">
+  <section class="vh-80" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                  <!-- it tell him to ref of [formGroup]="form" and (ngSubmit)="send()": like submit but no refresh for page -->
+                  <form class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="send()">
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example1c" class="form-control" formControlName="name" ngClass="{
+                          'is-valid':form.controls['name'].valid && form.controls['name'].touched,
+                          'is-invalid':form.controls['name'].invalid && form.controls['name'].touched
+                        }" />
+                        <label class="form-label" for="form3Example1c">Your Name</label>
+                      </div>
+
+                      <div class="invalid-feedback"
+                        *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+                        <span *ngIf="form.controls['name'].hasError('required')">name required</span>
+                        <span *ngIf="form.controls['name'].hasError('minlength')">name required</span>
+                      </div>
+                      <div class="valid-feedback" *ngIf="form.controls['name'].valid">goooooood</div>
+
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="email" id="form3Example3c" class="form-control" formControlName="email" ngClass="{
+                          'is-valid':form.controls['email'].valid && form.controls['email'].touched,
+                          'is-invalid':form.controls['email'].invalid && form.controls['email'].touched,
+                        }" />
+                        <label class="form-label" for="form3Example3c">Your Email</label>
+                      </div>
+
+                      <div class="invalid-feedback"
+                        *ngIf="form.controls['email'].invalid && form.controls['email'].touched ">
+                        <span *ngIf="form.controls['email'].hasError('required')">Please provide a enter User
+                          name.</span>
+                        <span *ngIf="form.controls['email'].hasError('pattern')">Please provide a valid User name with
+                          atleast 3 letter.</span>
+                      </div>
+                      <div class="valid-feedback" *ngIf="form.controls['email'].valid">
+                        Looks good!
+                      </div>
+
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example11c" class="form-control" formControlName="phoneNumber" />
+                        <label class="form-label" for="form3Example11c">phoneNumber</label>
+                      </div>
+
+                      <div class="invalid-feedback"
+                        *ngIf="form.controls['phoneNumber'].invalid && form.controls['phoneNumber'].touched ">
+                        <span *ngIf="form.controls['phoneNumber'].hasError('required')">Please provide a enter User
+                          name.</span>
+                        <span *ngIf="form.controls['phoneNumber'].hasError('minlength')">Please provide a valid User
+                          name with atleast 3 letter.</span>
+                        <span *ngIf="form.controls['phoneNumber'].hasError('maxlength')">Please provide a valid User
+                          name with atleast 3 letter.</span>
+                      </div>
+                      <div class="valid-feedback" *ngIf="form.controls['phoneNumber'].valid">
+                        Looks good!
+                      </div>
+
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input [type]="passType" id="form3Example4c" class="form-control" formControlName="password" />
+                        <label class="form-label" for="form3Example4c">Password</label>
+                      </div>
+                      <span (click)="change()" class="input-group-text" id="inputGroupPrepend2">
+                        <i *ngIf="passType=='text'" class="fa fa-eye"></i>
+                        <i *ngIf="passType == 'password'" class="fa fa-eye-slash"></i>
+                      </span>
+
+                      <div class="invalid-feedback" *ngIf="
+                      form.controls['password'].invalid &&
+                      form.controls['password'].touched">
+                        <span *ngIf="form.controls['password'].hasError('required')">Please provide a enter
+                          Password.</span>
+                        <span *ngIf="form.controls['password'].hasError('minlength')">Please provide a valid Password
+                          with atleast 8
+                          caracter.</span>
+                      </div>
+                      <div class="valid-feedback" *ngIf="form.controls['password'].valid">
+                        Looks good!
+                      </div>
+
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4" *ngIf="form.controls['password']">
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4cd" class="form-control" formControlName="password" />
+                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                      </div>
+                    </div>
+
+                
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <!-- make button invalid if input is false   routerLink="/login"-->
+                      <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Register</button>
+                    </div>
+
+                  </form>
+
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                    class="img-fluid" alt="Sample image">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

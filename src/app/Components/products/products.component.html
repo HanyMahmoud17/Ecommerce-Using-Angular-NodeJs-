@@ -1,0 +1,19 @@
+<div class="card">
+    <img [src]="product.imgURL" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.price}}</p>
+      <p class="card-text">{{product.quantity}}</p>
+      <div class="d-flex justify-content-center">
+
+        <a class="btn btn-primary" (click)="add(product)">addCa</a>
+        <a class="btn btn-secondary" (click)="addToWishlist(product)" >addWi</a>
+        <a class="btn btn-info"  [routerLink]="['/product',product._id]">G(id)</a>
+        <!-- <a class="btn "><i class="fa-solid fa-circle-plus"></i></a> -->
+        <!-- <a class="btn btn-info"  routerLink="/product/{{product.id}}">See More</a> -->
+        <!-- <a class="btn btn-info" [routerLink]="['./product',product._id]">See More</a> -->
+        <a class="btn btn-warning"  routerLink="/edit-product/{{product._id}}">E(id)</a>
+        <a class="btn btn-danger" (click)="delete(product._id!)" >D</a>
+      </div>
+    </div>
+  </div>
